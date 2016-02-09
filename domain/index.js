@@ -7,13 +7,25 @@ var _         = require('underscore.string'),
 
 module.exports = function() {
     return function (done) {
-        var prompts = [{
+        var prompts = [
+        {
+            name: 'name',
+            message: 'What is the singular name of your domain model',
+            default: 'todo',
+        },
+        {
             type: 'list',
             name: 'domainModels',
             choices: ['item, list'],
-            message: 'Which domain models?',
+            message: 'Which domain types would you like?',
             default: ['item, list'],
-        }, {
+        },
+        {
+            name: 'location',
+            message: 'Where shall I put the domain files?',
+            default: 'src/cljs/domain',
+        },
+        {
             type: 'confirm',
             name: 'moveon',
             message: 'Continue?'
@@ -24,7 +36,7 @@ module.exports = function() {
                 if (!answers.moveon) {
                     return done();
                 }
-                require('./create-components')(answers);
+                require('./create-domain-files')(answers);
             }
         );
     }

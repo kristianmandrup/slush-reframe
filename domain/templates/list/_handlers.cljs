@@ -15,3 +15,5 @@
 
 (register-handler :new-<%= domain-list %> new-<%= domain %>-list)
 (register-handler :delete-<%= domain-list %> delete-<%= domain %>-list)
+
+;; handlers to fetch data from server

@@ -11,19 +11,64 @@ Install `slush-reframe` globally:
 $ npm install -g slush-reframe
 ```
 
-### Usage
+## Usage
 
-Create a new folder for your project:
+### Create new Re-frame project
 
-```bash
-$ mkdir my-slush-reframe
-```
+Create a new re-frame project using:
 
-Run the generator from within the new folder:
+[re-frame-template](https://github.com/Day8/re-frame-template)
 
 ```bash
-$ cd my-slush-reframe && slush reframe
+$ lein new re-frame <project-name>
 ```
+
+Note that you can also customize which additional libs to integrate:
+
+```bash
+$ lein new re-frame <project-name> +garden +re-com +routes +test
+```
+
+### Populate re-frame project with domain files
+
+```bash
+$ cd <project-name>
+```
+
+Run the generator from within the new project folder:
+
+```bash
+$ slush reframe
+```
+
+Answer the prompts:
+
+```
+- What is the singular name of your domain model? todo
+
+- Which domain types would you like?
+x item
+x list
+
+- Where shall I put the domain files? src/cljs/domain
++ src/cljs/domain/todo/item
++ src/cljs/domain/todo/item/todo-handlers.cljs
++ src/cljs/domain/todo/item/todo-queries.cljs
++ src/cljs/domain/todo/item/todo-subscribers.cljs
++ src/cljs/domain/todo/item/todo-utils.cljs
++ src/cljs/domain/todo/item/todo-views.cljs
+
++ src/cljs/domain/todo/list
++ src/cljs/domain/todo/list/todo-handlers.cljs
++ src/cljs/domain/todo/list/todo-queries.cljs
++ src/cljs/domain/todo/list/todo-subscribers.cljs
++ src/cljs/domain/todo/list/todo-utils.cljs
++ src/cljs/domain/todo/list/todo-views.cljs
+```
+
+These domain files should create a solid foundation for building your domain logic, divided into logical parts that work well with re-frame. The functions and files generated follow conventions that we find convenient.
+
+Please feel free to customize the templates of the slush generator to your needs...
 
 ## Getting To Know Slush
 

@@ -7,18 +7,28 @@ var gulp = require('gulp'),
     path = require('path'),
     chalk = require('chalk-log');
 
-module.exports = function(answers) {
-  gulp.src(__dirname + '/templates/' + uiFolder)
+function createDomainFiles(type, answers, done) {
+  var fileDestination = answers.location + '/' + answers.name);
+
+  gulp.src(__dirname + '/templates/' + type)
       .pipe(template(answers))
       .pipe(rename(function (file) {
           if (file.basename[0] === '_') {
-              file.basename = '.' + file.basename.slice(1);
+              // create full domain file name such as:
+              // todo-views.cljs
+              file.basename = answers.name + '-' + file.basename.slice(1);
           }
       }))
       .pipe(conflict('./'))
-      .pipe(gulp.dest('./apps/_global'))
+      .pipe(gulp.dest('./' + fileDestination))
       .pipe(install())
       .on('end', function () {
           done();
       });
+}
+
+module.exports = function(answers) {
+  for (type in answrs.domainModels) {
+    createDomainModels(type, answers, done);
+  }
 }

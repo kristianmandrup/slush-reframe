@@ -1,1 +1,1 @@
-
+(ns <%= domain %>.list.utils)

@@ -22,3 +22,4 @@
 (register-handler :edit-<%= domain %> edit-<%= domain %>)
 (register-handler :delete-<%= domain %> delete-<%= domain %>)
 
+;; handlers to fetch data from server
