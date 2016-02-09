@@ -9,16 +9,21 @@ module.exports = function() {
     return function (done) {
         var prompts = [
         {
-            name: 'name',
-            message: 'What is the singular name of your domain model',
+            name: 'domain',
+            message: 'What is the singular name of your domain',
             default: 'todo',
         },
         {
             type: 'list',
-            name: 'domainModels',
+            name: 'domainTypes',
             choices: ['item, list'],
             message: 'Which domain types would you like?',
             default: ['item, list'],
+        },
+        {
+            name: 'namespace',
+            message: 'What is the container namespace of this domain?',
+            default: 'app',
         },
         {
             name: 'location',

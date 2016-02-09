@@ -1,4 +1,4 @@
-(ns <%= domain %>.list.subscribers
+(ns <%= namespace %>.<%= domain %>.list.subscribers
     (:require-macros [reagent.ratom :refer [reaction]])
 
 ;; return list of item ids

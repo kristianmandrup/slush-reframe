@@ -1,4 +1,4 @@
-(ns <%= domain %>.list.handlers
+(ns <%= namespace %>.<%= domain %>.list.handlers
     (:require [re-frame.core :refer [register-handler]]))
 
 ;; <%= domain %> list handlers

@@ -50,25 +50,34 @@ Answer the prompts:
 x item
 x list
 
+- What is the container namespace of this domain? app
+
 - Where shall I put the domain files? src/cljs/domain
 + src/cljs/domain/todo/item
-+ src/cljs/domain/todo/item/todo-handlers.cljs
-+ src/cljs/domain/todo/item/todo-queries.cljs
-+ src/cljs/domain/todo/item/todo-subscribers.cljs
-+ src/cljs/domain/todo/item/todo-utils.cljs
-+ src/cljs/domain/todo/item/todo-views.cljs
++ src/cljs/domain/todo/item/handlers.cljs
++ src/cljs/domain/todo/item/queries.cljs
++ src/cljs/domain/todo/item/subscribers.cljs
++ src/cljs/domain/todo/item/utils.cljs
++ src/cljs/domain/todo/item/views.cljs
 
 + src/cljs/domain/todo/list
-+ src/cljs/domain/todo/list/todo-handlers.cljs
-+ src/cljs/domain/todo/list/todo-queries.cljs
-+ src/cljs/domain/todo/list/todo-subscribers.cljs
-+ src/cljs/domain/todo/list/todo-utils.cljs
-+ src/cljs/domain/todo/list/todo-views.cljs
++ src/cljs/domain/todo/list/handlers.cljs
++ src/cljs/domain/todo/list/queries.cljs
++ src/cljs/domain/todo/list/subscribers.cljs
++ src/cljs/domain/todo/list/utils.cljs
++ src/cljs/domain/todo/list/views.cljs
+
++ src/cljs/domain/todo/list
++ src/cljs/domain/todo/handlers.cljs
++ src/cljs/domain/todo/queries.cljs
++ src/cljs/domain/todo/subscribers.cljs
++ src/cljs/domain/todo/utils.cljs
++ src/cljs/domain/todo/views.cljs
 ```
 
-These domain files should create a solid foundation for building your domain logic, divided into logical parts that work well with re-frame. The functions and files generated follow conventions that we find convenient.
+These domain files should create a solid foundation for building your domain logic, divided into logical parts that work well with re-frame. The functions and files generated follow conventions that make it easy to navigate and understand your project/code structure.
 
-Please feel free to customize the templates of the slush generator to your needs...
+Please feel free to customize the templates of the slush generator to best fit your needs...
 
 ## Getting To Know Slush
 

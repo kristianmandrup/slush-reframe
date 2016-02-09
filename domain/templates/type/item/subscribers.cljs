@@ -1,8 +1,8 @@
-(ns <%= domain %>.item.subscribers
+(ns <%= namespace %>.<%= domain %>.item.subscribers
     (:require-macros [reagent.ratom :refer [reaction]])
 
 ;; <%= domain %> subscribers
-;; TODO: use reaction macro
+;; Tip: use re-frame reaction macro
 
 (def mock-<%= domain %>-item
   {id: 1 name: "<%= domain %> item"})

@@ -8,15 +8,15 @@ var gulp = require('gulp'),
     chalk = require('chalk-log');
 
 function createDomainFiles(type, answers, done) {
-  var fileDestination = answers.location + '/' + answers.name);
+  var fileDestination = answers.location + '/' + answers.namespace '/' + answers.domain);
 
-  gulp.src(__dirname + '/templates/' + type)
+  gulp.src(__dirname + '/templates/type/' + type + '/')
       .pipe(template(answers))
       .pipe(rename(function (file) {
           if (file.basename[0] === '_') {
               // create full domain file name such as:
-              // todo-views.cljs
-              file.basename = answers.name + '-' + file.basename.slice(1);
+              // todo-views.cljs (or item-views.cljs ??)
+              // file.basename = answers.domain + '-' + file.basename.slice(1);
           }
       }))
       .pipe(conflict('./'))
@@ -28,7 +28,34 @@ function createDomainFiles(type, answers, done) {
 }
 
 module.exports = function(answers) {
-  for (type in answrs.domainModels) {
+  answers.req = {};
+  for (file in ['handlers', 'queries', 'subscribers', 'utils', 'views']) {
+    answers.req[file] = [];
+
+    for (domainType in domainTypes) {
+      answers[file].push('(:require ' + domain '.' + domainType + '.handlers)');
+    }
+  }
+
+  for (type in answers.domainTypes) {
     createDomainModels(type, answers, done);
   }
+
+  var fileDestination = answers.location + '/' + answers.namespace '/' + answers.domain);
+
+  gulp.src(__dirname + '/templates/root/')
+      .pipe(template(answers))
+      .pipe(rename(function (file) {
+          if (file.basename[0] === '_') {
+              // create full domain file name such as:
+              // todo-views.cljs
+              file.basename = answers.domain + '-' + file.basename.slice(1);
+          }
+      }))
+      .pipe(conflict('./'))
+      .pipe(gulp.dest('./' + fileDestination))
+      .pipe(install())
+      .on('end', function () {
+          done();
+      });
 }
