@@ -33,12 +33,13 @@ module.exports = function(answers) {
   var domain = answers.domain;
   var domainTypes = answers.domainTypes;
   var namespace = answers.namespace;
+  var files = answers.files;
 
   // Such as: src/cljs/app/todo
   var filePath = answers.location + '/' + answers.namespace + '/' + answers.domain;
 
   // build cljs require statements for insertion in domain root files
-  for (file in ['handlers', 'queries', 'subscribers', 'utils', 'views']) {
+  for (file of files) {
     answers.req[file] = [];
 
     for (domainType of domainTypes) {

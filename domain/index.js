@@ -10,24 +10,33 @@ module.exports = function() {
         var prompts = [
         {
             name: 'domain',
-            message: 'What is the singular name of your domain',
+            message: 'Domain name',
             default: 'todo'
         },
         {
             type: 'checkbox',
             name: 'domainTypes',
             choices: ['item', 'list'],
-            message: 'Which domain types would you like?',
+            message: 'Domain types',
             default: ['item', 'list']
         },
         {
+            type: 'checkbox',
+            name: 'files',
+            choices: ['handlers', 'queries', 'subscribers', 'utils', 'views'],
+            message: 'Files',
+            default: ['handlers', 'queries', 'subscribers', 'utils', 'views']
+        },
+
+
+        {
             name: 'namespace',
-            message: 'What is the container namespace of this domain?',
-            default: 'app'
+            message: 'Container namespace',
+            default: 'my-app'
         },
         {
             name: 'location',
-            message: 'Where shall I put the domain files?',
+            message: 'Destination path',
             default: 'src/cljs/'
         },
         {

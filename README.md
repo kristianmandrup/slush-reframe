@@ -61,15 +61,22 @@ $ slush reframe
 Answer the prompts:
 
 ```
-- What is the singular name of your domain model? todo
+- Name your domain model? todo
 
-- Which domain types would you like?
+- Domain types?
 x item
 x list
 
-- What is the container namespace of this domain? app
+- Files?
+x handlers
+x queries
+x subscribers
+x utils
+x views
 
-- Where shall I put the domain files? src/cljs/domain
+- Container namespace? app
+
+- Destination path? src/cljs/domain
 + src/cljs/domain/todo/item
 + src/cljs/domain/todo/item/handlers.cljs
 + src/cljs/domain/todo/item/queries.cljs
