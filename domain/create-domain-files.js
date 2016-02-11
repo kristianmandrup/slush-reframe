@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     chalk = require('chalk-log');
 
 function createDomainFiles(type, answers, done) {
-  var fileDestination = answers.location + '/' + answers.namespace '/' + answers.domain);
+  var fileDestination = answers.location + '/' + answers.namespace + '/' + answers.domain;
 
   gulp.src(__dirname + '/templates/type/' + type + '/')
       .pipe(template(answers))
@@ -29,19 +29,24 @@ function createDomainFiles(type, answers, done) {
 
 module.exports = function(answers) {
   answers.req = {};
+  var domain = answers.domain;
+  var domainTypes = answers.domainTypes;
+  var namespace = answers.namespace;
+
+  // build cljs require statements for insertion in domain root files
   for (file in ['handlers', 'queries', 'subscribers', 'utils', 'views']) {
     answers.req[file] = [];
 
     for (domainType in domainTypes) {
-      answers[file].push('(:require ' + domain '.' + domainType + '.handlers)');
+      answers.req[file].push('(:require ' + domain + '.' + domainType + '.handlers)');
     }
   }
 
   for (type in answers.domainTypes) {
-    createDomainModels(type, answers, done);
+    createDomainFiles(type, answers);
   }
 
-  var fileDestination = answers.location + '/' + answers.namespace '/' + answers.domain);
+  var fileDestination = answers.location + '/' + answers.namespace + '/' + domain;
 
   gulp.src(__dirname + '/templates/root/')
       .pipe(template(answers))

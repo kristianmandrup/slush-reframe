@@ -11,24 +11,24 @@ module.exports = function() {
         {
             name: 'domain',
             message: 'What is the singular name of your domain',
-            default: 'todo',
+            default: 'todo'
         },
         {
-            type: 'list',
+            type: 'checkbox',
             name: 'domainTypes',
-            choices: ['item, list'],
+            choices: ['item', 'list'],
             message: 'Which domain types would you like?',
-            default: ['item, list'],
+            default: ['item', 'list']
         },
         {
             name: 'namespace',
             message: 'What is the container namespace of this domain?',
-            default: 'app',
+            default: 'app'
         },
         {
             name: 'location',
             message: 'Where shall I put the domain files?',
-            default: 'src/cljs/domain',
+            default: 'src/cljs/domain'
         },
         {
             type: 'confirm',

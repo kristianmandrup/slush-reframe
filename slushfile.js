@@ -19,7 +19,7 @@ function format(string) {
 
 let tasks = {};
 tasks.default = require('./domain')({});
-gulp.task('domain', tasks.default);
+gulp.task('default', tasks.default);
 
 // TODO: read from package.json!!!
 var packInfo = require('./package.json');
