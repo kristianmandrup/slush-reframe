@@ -7,10 +7,11 @@ var gulp = require('gulp'),
     path = require('path'),
     chalk = require('chalk-log');
 
-function createDomainFiles(type, answers, done) {
-  var fileDestination = answers.location + '/' + answers.namespace + '/' + answers.domain;
+function createDomainFiles(type, filePath, answers) {
+  var fileDestination = filePath + '/' + type
 
-  gulp.src(__dirname + '/templates/type/' + type + '/')
+  chalk.log('creating ' + type + ' domain files...');
+  gulp.src(__dirname + '/templates/type/' + type + '/**')
       .pipe(template(answers))
       .pipe(rename(function (file) {
           if (file.basename[0] === '_') {
@@ -33,28 +34,28 @@ module.exports = function(answers) {
   var domainTypes = answers.domainTypes;
   var namespace = answers.namespace;
 
+  // Such as: src/cljs/app/todo
+  var filePath = answers.location + '/' + answers.namespace + '/' + answers.domain;
+
   // build cljs require statements for insertion in domain root files
   for (file in ['handlers', 'queries', 'subscribers', 'utils', 'views']) {
     answers.req[file] = [];
 
-    for (domainType in domainTypes) {
+    for (domainType of domainTypes) {
       answers.req[file].push('(:require ' + domain + '.' + domainType + '.handlers)');
     }
   }
 
-  for (type in answers.domainTypes) {
-    createDomainFiles(type, answers);
-  }
+  var fileDestination = filePath;
 
-  var fileDestination = answers.location + '/' + answers.namespace + '/' + domain;
-
-  gulp.src(__dirname + '/templates/root/')
+  chalk.log('creating root domain files...');
+  gulp.src(__dirname + '/templates/domain/**')
       .pipe(template(answers))
       .pipe(rename(function (file) {
           if (file.basename[0] === '_') {
               // create full domain file name such as:
               // todo-views.cljs
-              file.basename = answers.domain + '-' + file.basename.slice(1);
+              // file.basename = answers.domain + '-' + file.basename.slice(1);
           }
       }))
       .pipe(conflict('./'))
@@ -63,4 +64,12 @@ module.exports = function(answers) {
       .on('end', function () {
           done();
       });
+
+  // create domain files for:
+  // - item
+  // - list
+
+  for (type of domainTypes) {
+    createDomainFiles(type, filePath, answers);
+  }
 }

@@ -4,16 +4,16 @@
 ;; <%= domain %> list handlers
 
 (defn new-<%= domain %>-list []
-  (fn [db, [id]]
+  (fn [db, [item]]
     ;; ...
     ))
 
 (defn delete-<%= domain %>-list []
-  (fn [db, [id]]
+  (fn [db, [item]]
     ;; ...
     ))
 
-(register-handler :new-<%= domain-list %> new-<%= domain %>-list)
-(register-handler :delete-<%= domain-list %> delete-<%= domain %>-list)
+(register-handler :new-<%= domain %>-list new-<%= domain %>-list)
+(register-handler :delete-<%= domain %>-list delete-<%= domain %>-list)
 
 ;; handlers to fetch data from server

@@ -28,7 +28,7 @@ module.exports = function() {
         {
             name: 'location',
             message: 'Where shall I put the domain files?',
-            default: 'src/cljs/domain'
+            default: 'src/cljs/'
         },
         {
             type: 'confirm',

@@ -1,4 +1,4 @@
-(ns <%= namespace %>.<%= domain %>.views
+(ns <%= namespace %>.<%= domain %>.list.views
     (:require [reagent.core :as r)
     (:require [re-frame.core :refer [subscribe dispatch]])
     (:require [<%= domain %>.item.views.core :as [<%= domain %>-item]])

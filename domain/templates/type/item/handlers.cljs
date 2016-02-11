@@ -4,17 +4,17 @@
 ;; <%= domain %> handlers
 
 (defn new-<%= domain %> []
-  (fn [db, [id]]
+  (fn [db, [item]]
     ;; ...
     ))
 
 (defn edit-<%= domain %> []
-  (fn [db, [id]]
+  (fn [db, [item]]
     ;; ...
     ))
 
 (defn delete-<%= domain %> []
-  (fn [db, [id]]
+  (fn [db, [item]]
     ;; ...
     ))
 
