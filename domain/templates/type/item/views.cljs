@@ -1,5 +1,5 @@
 (ns <%= namespace %>.<%= domain %>.views
-    (:require [reagent.core :as r)
+    (:require [reagent.core :as r])
     (:require [re-frame.core :refer [subscribe dispatch]]))
 
 ;; <%= domain %> Views
