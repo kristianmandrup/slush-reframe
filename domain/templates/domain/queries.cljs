@@ -1,3 +1,3 @@
 (ns <%= domain %>.queries
-    <%= req.queries %>)
+    (:require <%= req.queries %>))
 

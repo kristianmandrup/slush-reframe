@@ -24,6 +24,8 @@ function createDomainFiles(type, filePath, answers) {
       .pipe(gulp.dest('./' + fileDestination))
       .pipe(install())
       .on('end', function () {
+          chalk.info('Remember:');
+          chalk.log('git add .');
           done();
       });
 }
@@ -43,7 +45,7 @@ module.exports = function(answers) {
     answers.req[file] = [];
 
     for (domainType of domainTypes) {
-      answers.req[file].push('(:require ' + domain + '.' + domainType + '.handlers)');
+      answers.req[file].push('[' + domain + '.' + domainType + '.handlers]\n');
     }
   }
 
@@ -73,4 +75,5 @@ module.exports = function(answers) {
   for (type of domainTypes) {
     createDomainFiles(type, filePath, answers);
   }
+
 }

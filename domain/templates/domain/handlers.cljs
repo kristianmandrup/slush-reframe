@@ -1,2 +1,2 @@
 (ns <%= domain %>.handlers
-    <%= req.handlers %>)
+    (:require <%= req.handlers %>))

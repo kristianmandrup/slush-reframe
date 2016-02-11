@@ -1,7 +1,7 @@
 (ns <%= namespace %>.<%= domain %>.list.views
-    (:require [reagent.core :as r])
-    (:require [re-frame.core :refer [subscribe dispatch]])
-    (:require [<%= domain %>.item.views :refer [<%= domain %>-item]]))
+    (:require [reagent.core :as r]
+              [re-frame.core :refer [subscribe dispatch]]
+              [<%= namespace %>.<%= domain %>.item.views :refer [<%= domain %>-item]]))
 
 ;; Display <%= domain %> list
 
@@ -14,5 +14,4 @@
           (<%= domain %>-item item))
       ]
       [:button "Create <%= domain %>" #(dispatch [:new-<%= domain %>])]
-    ]
-  ))
+    ]))
