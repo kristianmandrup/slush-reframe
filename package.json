@@ -1,5 +1,5 @@
 {
-    "name": "slush-reframe",
+    "name": "@kmandrup/slush-reframe",
     "description": "Reframe generator",
     "version": "0.1.0",
     "homepage": "https://github.com/kristianmandrup/slush-reframe",
