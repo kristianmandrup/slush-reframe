@@ -1,3 +1,3 @@
-(ns <%= domain %>.queries
-    (:require <%= req.queries %>))
+(ns <%= namespace %>.<%= domain %>.queries
+  (:require <%= req.queries %>))
 

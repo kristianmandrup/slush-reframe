@@ -43,10 +43,11 @@ module.exports = function(answers) {
   // build cljs require statements for insertion in domain root files
   for (file of files) {
     answers.req[file] = [];
-
+    var temp = [];
     for (domainType of domainTypes) {
-      answers.req[file].push('[' + domain + '.' + domainType + '.handlers]\n');
+      temp.push('[' + namespace + '.' + domain + '.' + domainType + '.handlers]');
     }
+    answers.req[file] = temp.join('\n            ')
   }
 
   var fileDestination = filePath;

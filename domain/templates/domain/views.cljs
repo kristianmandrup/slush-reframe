@@ -1,3 +1,3 @@
-(ns <%= domain %>.views
+(ns <%= namespace %>.<%= domain %>.views
   (:require <%= req.views %>))
 

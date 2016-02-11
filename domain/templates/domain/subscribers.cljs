@@ -1,3 +1,3 @@
-(ns <%= domain %>.subscribers
-    (:require <%= req.subscribers %>))
+(ns <%= namespace %>.<%= domain %>.subscribers
+  (:require <%= req.subscribers %>))
 

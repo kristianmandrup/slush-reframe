@@ -1,5 +1,5 @@
 (ns <%= namespace %>.<%= domain %>.item.subscribers
-    (:require-macros [reagent.ratom :refer [reaction]]))
+  (:require-macros [reagent.ratom :refer [reaction]]))
 
 ;; <%= domain %> subscribers
 ;; Tip: use re-frame reaction macro

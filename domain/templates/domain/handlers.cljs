@@ -1,2 +1,2 @@
-(ns <%= domain %>.handlers
-    (:require <%= req.handlers %>))
+(ns <%= namespace %>.<%= domain %>.handlers
+  (:require <%= req.handlers %>))

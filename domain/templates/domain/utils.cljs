@@ -1,4 +1,4 @@
-(ns <%= domain %>.utils
-    (:require <%= req.utils %>))
+(ns <%= namespace %>.<%= domain %>.utils
+  (:require <%= req.utils %>))
 
 
