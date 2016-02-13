@@ -1,3 +1,11 @@
+v0.1.1:
+  date: 2016-2-13
+  changes:
+    - Simplify file generation
+    - Fix root domain files
+      - Only generate root domain files necessary 
+      - Only require existing files
+
 v0.1.0:
   date: 2016-2-9
   changes:
