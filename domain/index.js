@@ -37,7 +37,7 @@ module.exports = function() {
         {
             name: 'location',
             message: 'Destination path',
-            default: 'src/cljs/'
+            default: 'src/cljs'
         },
         {
             type: 'confirm',

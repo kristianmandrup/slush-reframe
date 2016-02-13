@@ -1,5 +1,6 @@
 (ns <%= namespace %>.<%= domain %>.item.subscribers
-  (:require-macros [reagent.ratom :refer [reaction]]))
+  (:require-macros [reagent.ratom :refer [reaction]])
+  (:require [re-frame.core :refer [register-sub]]))
 
 ;; <%= domain %> subscribers
 ;; Tip: use re-frame reaction macro
@@ -12,7 +13,6 @@
   [db, [id]]
   (reaction [db mock-<%= domain %>-item]))
 
-;; return list of item ids
-(defn get-<%= domain %>-list
-  [db, []]
-  (reaction [db [mock-<%= domain %>-item]]))
+(register-sub
+ :get-<%= domain %>-item
+ get-<%= domain %>-item)

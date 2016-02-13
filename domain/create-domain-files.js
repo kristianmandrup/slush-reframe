@@ -8,17 +8,12 @@ var gulp = require('gulp'),
     chalk = require('chalk-log');
 
 function createDomainFiles(type, filePath, answers) {
-  var fileDestination = filePath + '/' + type
+  var fileDestination = filePath + '/' + type;
 
-  chalk.log('creating ' + type + ' domain files...');
-  gulp.src(__dirname + '/templates/type/' + type + '/**')
+  chalk.log('creating ' + type + ' domain files...' + fileDestination);
+  gulp.src(__dirname + '/templates/' + type + '/**')
       .pipe(template(answers))
       .pipe(rename(function (file) {
-          if (file.basename[0] === '_') {
-              // create full domain file name such as:
-              // todo-views.cljs (or item-views.cljs ??)
-              // file.basename = answers.domain + '-' + file.basename.slice(1);
-          }
       }))
       .pipe(conflict('./'))
       .pipe(gulp.dest('./' + fileDestination))
@@ -26,6 +21,26 @@ function createDomainFiles(type, filePath, answers) {
       .on('end', function () {
           chalk.info('Remember:');
           chalk.log('git add .');
+          done();
+      });
+}
+
+function createRootDomainFiles(filePath, name, answers) {
+  var fileDestination = filePath;
+
+  chalk.log('creating root domain file ' + name + ' : ' + fileDestination);
+  answers.type = name;
+  gulp.src(__dirname + '/templates/_domain.cljs')
+      .pipe(template(answers))
+      .pipe(rename(function (file) {
+          if (file.basename[0] === '_') {
+              file.basename = name;
+          }
+      }))
+      .pipe(conflict('./'))
+      .pipe(gulp.dest('./' + fileDestination))
+      .pipe(install())
+      .on('end', function () {
           done();
       });
 }
@@ -50,29 +65,16 @@ module.exports = function(answers) {
     answers.req[file] = temp.join('\n            ')
   }
 
-  var fileDestination = filePath;
 
   chalk.log('creating root domain files...');
-  gulp.src(__dirname + '/templates/domain/**')
-      .pipe(template(answers))
-      .pipe(rename(function (file) {
-          if (file.basename[0] === '_') {
-              // create full domain file name such as:
-              // todo-views.cljs
-              // file.basename = answers.domain + '-' + file.basename.slice(1);
-          }
-      }))
-      .pipe(conflict('./'))
-      .pipe(gulp.dest('./' + fileDestination))
-      .pipe(install())
-      .on('end', function () {
-          done();
-      });
+  for (name of files) {
+    createRootDomainFiles(filePath, name, answers)
+  }
+
 
   // create domain files for:
   // - item
   // - list
-
   for (type of domainTypes) {
     createDomainFiles(type, filePath, answers);
   }

@@ -4,9 +4,6 @@
 ;; <%= domain %> handlers
 
 (defn new-<%= domain %> []
-  (fn [db, [item]]
-    ;; ...
-    ))
 
 (defn edit-<%= domain %> []
   (fn [db, [item]]
@@ -18,7 +15,12 @@
     ;; ...
     ))
 
-(register-handler :new-<%= domain %> new-<%= domain %>)
+(register-handler
+  :new-<%= domain %>  ;; the name of the handler
+  (fn [db, [item]] ;; the handler
+    ;; ...
+    ))
+
 (register-handler :edit-<%= domain %> edit-<%= domain %>)
 (register-handler :delete-<%= domain %> delete-<%= domain %>)
 
