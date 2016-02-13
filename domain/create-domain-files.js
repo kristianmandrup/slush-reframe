@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     _ = require('underscore.string'),
     path = require('path'),
     chalk = require('chalk-log');
+    util = require('util');
 
 function createDomainFiles(type, filePath, answers) {
   var fileDestination = filePath + '/' + type;
@@ -29,9 +30,13 @@ function createRootDomainFiles(filePath, name, answers) {
   var fileDestination = filePath;
 
   chalk.log('creating root domain file ' + name + ' : ' + fileDestination);
-  answers.type = name;
+  var rootAnswers = Object.assign({}, answers);
+  rootAnswers.type = name;
+
+  chalk.log(util.inspect(rootAnswers));
+
   gulp.src(__dirname + '/templates/_domain.cljs')
-      .pipe(template(answers))
+      .pipe(template(rootAnswers))
       .pipe(rename(function (file) {
           if (file.basename[0] === '_') {
               file.basename = name;
@@ -60,7 +65,7 @@ module.exports = function(answers) {
     answers.req[file] = [];
     var temp = [];
     for (domainType of domainTypes) {
-      temp.push('[' + namespace + '.' + domain + '.' + domainType + '.handlers]');
+      temp.push('[' + namespace + '.' + domain + '.' + domainType + '.' + file + ']');
     }
     answers.req[file] = temp.join('\n            ')
   }
