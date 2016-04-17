@@ -6,8 +6,6 @@
  * Licensed under the MIT license.
  */
 
-'use strict';
-
 var gulp = require('gulp');
 var path = require('path');
 var chalk = require('chalk-log');
@@ -17,7 +15,7 @@ function format(string) {
     return username.replace(/\s/g, '');
 }
 
-let tasks = {};
+var tasks = {};
 tasks.default = require('./domain')({});
 gulp.task('default', tasks.default);
 

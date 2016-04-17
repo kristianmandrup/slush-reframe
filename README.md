@@ -8,7 +8,7 @@
 Install `slush-reframe` globally:
 
 ```bash
-$ npm install -g slush-reframe
+$ npm install -g slush slush-reframe
 ```
 
 ## Usage
