@@ -30,7 +30,7 @@ function createRootDomainFiles(filePath, name, answers) {
   var fileDestination = filePath;
 
   chalk.log('creating root domain file ' + name + ' : ' + fileDestination);
-  var rootAnswers = Object.assign({}, answers);
+  var rootAnswers =  JSON.parse(JSON.stringify(answers));
   rootAnswers.type = name;
 
   chalk.log(util.inspect(rootAnswers));
@@ -60,19 +60,26 @@ module.exports = function(answers) {
   // Such as: src/cljs/app/todo
   var filePath = answers.location + '/' + answers.namespace + '/' + answers.domain;
 
+  var index1 = 0;
+  var index2 = 0;
   // build cljs require statements for insertion in domain root files
-  for (file of files) {
+  for (index1 = 0; index1 < files.length; index1+=1) {
+    var file = files[index1];
     answers.req[file] = [];
     var temp = [];
-    for (domainType of domainTypes) {
+    for (index2 = 0; index2 < domainTypes.length; index2+=1) {
+      var domainType = domainTypes[index2]; 
       temp.push('[' + namespace + '.' + domain + '.' + domainType + '.' + file + ']');
     }
     answers.req[file] = temp.join('\n            ')
   }
 
+  
 
   chalk.log('creating root domain files...');
-  for (name of files) {
+  chalk.log(files);
+  for (index1 = 0; index1 < files.length; index1+=1) {
+    var name = files[index1];
     createRootDomainFiles(filePath, name, answers)
   }
 
@@ -80,8 +87,9 @@ module.exports = function(answers) {
   // create domain files for:
   // - item
   // - list
-  for (type of domainTypes) {
-    createDomainFiles(type, filePath, answers);
+  for (index1 = 0; index1 < domainTypes.length; index1+=1) {
+    var dt = domainTypes[index1];
+    createDomainFiles(dt, filePath, answers);
   }
 
 }
