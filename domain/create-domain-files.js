@@ -30,7 +30,7 @@ function createRootDomainFiles(filePath, name, answers) {
   var fileDestination = filePath;
 
   chalk.log('creating root domain file ' + name + ' : ' + fileDestination);
-  var rootAnswers =  JSON.parse(JSON.stringify(answers));
+  var rootAnswers =  Object.create(answers);
   rootAnswers.type = name;
 
   chalk.log(util.inspect(rootAnswers));
