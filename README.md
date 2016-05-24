@@ -18,7 +18,7 @@ $ npm install -g slush slush-reframe
 Clone the repo and link it (symlink)
 
 ```bash
-git clone https://github.com/kristianmandrup/slush-reframe.git`
+git clone https://github.com/kristianmandrup/slush-reframe.git
 cd slush-reframe
 npm install
 npm link
