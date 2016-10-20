@@ -6,7 +6,7 @@
 ;; Display <%= domain %> list
 
 (defn <%= domain %>-list []
-  (let list (subscribe [:get-<%= domain %>-list])
+  (let [list (subscribe [:get-<%= domain %>-list])]
     [:div {:class "<%= domain %>-list"}
       [:h3 "<%= domain %> list"]
       [:ul
