@@ -1,5 +1,7 @@
 # Slush-reframe [![Build Status](https://secure.travis-ci.org/kristianmandrup/slush-reframe.png?branch=master)](https://travis-ci.org/kristianmandrup/slush-reframe) [![NPM version](https://badge-me.herokuapp.com/api/npm/slush-reframe.png)](http://badges.enytc.com/for/npm/slush-reframe)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/kristianmandrup/slush-reframe.svg)](https://greenkeeper.io/)
+
 > Reframe generator
 
 
